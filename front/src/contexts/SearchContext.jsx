@@ -19,27 +19,25 @@ export function SearchContextProvider({ children }) {
   const navigate = useNavigate();
 
   // Search request
-  const postData = async () => {
-    if (!search.zip_code && !search.keyword) {
-      return;
-    }
-    try {
-      await axios.post('http://localhost:3001/api/v1/activity/search', {
-        keyword: search.keyword,
-        zip_code: search.zip_code,
-      })
-
-        .then((res) => {
-          setResults(res.data);
-        });
-    }
-    catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(
     () => {
+      const postData = async () => {
+        if (!search.zip_code && !search.keyword) {
+          return;
+        }
+        try {
+          await axios.post('http://localhost:3001/api/v1/activity/search', {
+            keyword: search.keyword,
+            zip_code: search.zip_code,
+          })
+            .then((res) => {
+              setResults(res.data);
+            });
+        }
+        catch (error) {
+          console.log(error);
+        }
+      };
       postData();
     },
     [search],

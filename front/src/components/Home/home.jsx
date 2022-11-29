@@ -21,7 +21,6 @@ function HomePage() {
     e.preventDefault();
     handleSearch(e, state);
   };
-  
   return (
     <div className="home">
       <header>

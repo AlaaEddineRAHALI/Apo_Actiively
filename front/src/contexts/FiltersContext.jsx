@@ -9,12 +9,10 @@ export default FiltersContext;
 
 export function FiltersContextProvider({ children }) {
   const [filtersSelect, setFilters] = useState([]);
-  console.log(filtersSelect);
 
   const handleFilter = (Filter) => {
     setFilters(Filter);
   };
-
 
   const memoizedValue = useMemo(() => ({
     filtersSelect,
