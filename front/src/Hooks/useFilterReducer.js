@@ -18,7 +18,7 @@ const FilterInitial = {
 
 function filterReducer(oldState, action) {
   switch (action.type) {
-    case 'SET_VALUE':
+    case 'SET_VALUE': {
       if (action.payload.name === 'monday') {
         let monday = (action.payload.value);
         if (monday) {
@@ -189,7 +189,11 @@ function filterReducer(oldState, action) {
           men,
         };
       }
-      break;
+      return {
+        ...oldState,
+        [action.payload.name]: action.payload.value,
+      };
+    }
     default: {
       return oldState;
     }

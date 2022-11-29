@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 const FiltersContext = React.createContext({
@@ -9,9 +9,12 @@ export default FiltersContext;
 
 export function FiltersContextProvider({ children }) {
   const [filtersSelect, setFilters] = useState([]);
+  console.log(filtersSelect);
+
   const handleFilter = (Filter) => {
     setFilters(Filter);
   };
+
 
   const memoizedValue = useMemo(() => ({
     filtersSelect,
