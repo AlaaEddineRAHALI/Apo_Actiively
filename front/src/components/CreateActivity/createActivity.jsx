@@ -46,7 +46,7 @@ function CreateActivity({
         console.log('data:', data);
         axios
             .post(
-                'http://localhost:3001/api/v1/organism/create',
+                'https://actiively-back.onrender.com/api/v1/organism/create',
                 data,
                 {
                     headers: {
@@ -60,13 +60,13 @@ function CreateActivity({
                     swal({
                         title: "L'activité doit avoir un nom unique !",
                         icon: 'error',
-                      });
+                    });
                 }
                 else {
                     swal({
-                    title: "L'activité a bien été créée !",
-                    icon: 'success',
-                  });
+                        title: "L'activité a bien été créée !",
+                        icon: 'success',
+                    });
                 }
             })
             .catch((error) => {
@@ -75,7 +75,7 @@ function CreateActivity({
         navigate('/organism/activities');
     };
 
-return (
+    return (
         <div className="container">
             <div className="container-image">
                 <img src={Sport} alt="Sport" className="image" />
@@ -191,7 +191,7 @@ return (
                         {errors.zip_code && <p className="errors">{errors.zip_code.message}</p>}
                     </div>
                     <div className="field">
-                    <label className="label-select">
+                        <label className="label-select">
                             Jour de l&apos;activité
                             <select
                                 id="day"
@@ -240,7 +240,7 @@ return (
                         </label>
                     </div>
                     <div className="label-select">
-                    <label className="label-form">
+                        <label className="label-form">
                             Tarif
                         </label>
                         <input
@@ -255,7 +255,7 @@ return (
                         {errors.price && <p className="errors">{errors.price.message}</p>}
                     </div>
                     <div className="label-select">
-                    <label className="label-form">
+                        <label className="label-form">
                             Type de tarif
                             <select
                                 id="price_type"
@@ -270,7 +270,7 @@ return (
                         </label>
                     </div>
                     <div className="label-select">
-                    <label className="label-form">
+                        <label className="label-form">
                             Genre
                             <select
                                 id="gender"
@@ -281,8 +281,8 @@ return (
                                 <option value="Mixte">Mixte</option>
                             </select>
                         </label>
-                        </div>
-                         <div className="label-select">
+                    </div>
+                    <div className="label-select">
                         <label className="label-select">
                             Niveau
                             <select

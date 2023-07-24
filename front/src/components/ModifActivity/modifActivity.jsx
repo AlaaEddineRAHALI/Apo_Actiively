@@ -46,12 +46,12 @@ function ModifActivity({
     // Request to API to get data for an Activity for placeholders
     const fetchActivity = async () => {
         try {
-        const response = await axios.get(`http://localhost:3001/api/v1/activity/${id}`);
-        // Update states with results
-        setActivity(response.data);
+            const response = await axios.get(`https://actiively-back.onrender.com/api/v1/activity/${id}`);
+            // Update states with results
+            setActivity(response.data);
         }
         catch (error) {
-        console.log(error);
+            console.log(error);
         }
     };
 
@@ -59,7 +59,7 @@ function ModifActivity({
     const onSubmit = (data) => {
         axios
             .patch(
-                `http://localhost:3001/api/v1/organism/activity/${id}/edit`,
+                `https://actiively-back.onrender.com/api/v1/organism/activity/${id}/edit`,
                 data,
                 {
                     headers: {
@@ -72,7 +72,7 @@ function ModifActivity({
                 swal({
                     title: "L'activité a bien été modifiée !",
                     icon: 'success',
-                  });
+                });
                 setActivity(response.data);
             })
             .catch((error) => {
@@ -83,11 +83,11 @@ function ModifActivity({
 
     // useEffect so that data is fetched on mount
     useEffect(
-         () => {
-         fetchActivity();
+        () => {
+            fetchActivity();
         },
-          [],
-        );
+        [],
+    );
 
     return (
 
@@ -108,23 +108,23 @@ function ModifActivity({
 
                     <form className="ui form container-form" onSubmit={handleSubmit(onSubmit)}>
 
-                    <div className="label-select">
-                        <label className="label-form">
-                                    URL de l&apos;image
-                        </label>
-                                <input
-                                    placeholder={activity.image_url}
-                                    id="image_url"
-                                    type="text"
-                                    name="image_url"
-                                    {...register('image_url')}
-                                />
-                    </div>
+                        <div className="label-select">
+                            <label className="label-form">
+                                URL de l&apos;image
+                            </label>
+                            <input
+                                placeholder={activity.image_url}
+                                id="image_url"
+                                type="text"
+                                name="image_url"
+                                {...register('image_url')}
+                            />
+                        </div>
 
-                    <div className="label-select">
-                        <label className="label-form">
+                        <div className="label-select">
+                            <label className="label-form">
                                 Description
-                        </label>
+                            </label>
                             <textarea
                                 placeholder={activity.description}
                                 id="description"
@@ -132,12 +132,12 @@ function ModifActivity({
                                 name="description"
                                 {...register('description')}
                             />
-                    </div>
+                        </div>
 
-                    <div className="label-select">
-                        <label className="label-form">
+                        <div className="label-select">
+                            <label className="label-form">
                                 Adresse
-                        </label>
+                            </label>
                             <input
                                 placeholder={activity.address}
                                 id="address"
@@ -152,12 +152,12 @@ function ModifActivity({
                             />
                             {errors.address && <p className="errors">{errors.address.message}</p>}
 
-                    </div>
+                        </div>
 
                         <div className="label-select">
-                        <label className="label-form">
+                            <label className="label-form">
                                 Ville
-                        </label>
+                            </label>
                             <input
                                 placeholder={activity.city}
                                 id="city"
@@ -192,7 +192,7 @@ function ModifActivity({
                             {errors.zip_code && <p className="errors">{errors.zip_code.message}</p>}
                         </div>
                         <div className="field">
-                        <label className="label-select">
+                            <label className="label-select">
                                 Jour de l&apos;activité
                                 <select
                                     id="day"
@@ -207,9 +207,9 @@ function ModifActivity({
                                     <option value="Dimanche">Dimanche</option>
 
                                 </select>
-                        </label>
+                            </label>
 
-                        <label className="label-select">
+                            <label className="label-select">
                                 Heure de début de l&apos;activité
                                 <input
                                     id="start_time"
@@ -225,8 +225,8 @@ function ModifActivity({
                                 />
                                 {errors.start_time && <p className="errors">{errors.start_time.message}</p>}
 
-                        </label>
-                        <label className="label-select">
+                            </label>
+                            <label className="label-select">
                                 Heure de fin de l&apos;activité
                                 <input
                                     id="end_time"
@@ -241,13 +241,13 @@ function ModifActivity({
                                     })}
                                 />
                                 {errors.end_time && <p className="errors">{errors.end_time.message}</p>}
-                        </label>
+                            </label>
                         </div>
                         {' '}
                         <div className="label-select">
-                    <label className="label-form">
+                            <label className="label-form">
                                 Tarif
-                    </label>
+                            </label>
                             <input
                                 placeholder={activity.price}
                                 id="price"
@@ -285,14 +285,14 @@ function ModifActivity({
                                     id="gender"
                                     {...register('gender')}
                                 >
-                                <option value="Masculin">Masculin</option>
-                                <option value="Féminin">Féminin</option>
-                                <option value="Mixte">Mixte</option>
+                                    <option value="Masculin">Masculin</option>
+                                    <option value="Féminin">Féminin</option>
+                                    <option value="Mixte">Mixte</option>
 
                                 </select>
                             </label>
                         </div>
-                            <div className="label-select">
+                        <div className="label-select">
                             <label className="label-select">
                                 Niveau
                                 <select
@@ -305,7 +305,7 @@ function ModifActivity({
 
                                 </select>
                             </label>
-                            </div>
+                        </div>
                         <div className="field">
                             <Button
                                 type="submit"

@@ -22,7 +22,7 @@ function Activity({
   // Request to API to get data for an Activity with an id in URL
   const fetchActivity = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/api/v1/activity/${id}`);
+      const response = await axios.get(`https://actiively-back.onrender.com/api/v1/activity/${id}`);
       // Update states with results
       setActivity(response.data);
       setOrganism(response.data.organism_infos);
@@ -52,7 +52,7 @@ function Activity({
   const deleteActivity = async () => {
     try {
       await axios.delete(
-        `http://localhost:3001/api/v1/organism/activity/${id}/delete`,
+        `https://actiively-back.onrender.com/api/v1/organism/activity/${id}/delete`,
         {
           headers: { authorization: token },
         },
@@ -144,31 +144,31 @@ function Activity({
         </Grid.Row>
         {/* If on public page, show info on organism */}
         {currentPath === `/activity/${activity.code_activity}` && (
-        <Grid.Row>
-          <Grid.Column mobile={12} computer={8}>
-            <Header as="h2" size="medium">
-              L&apos;association :
+          <Grid.Row>
+            <Grid.Column mobile={12} computer={8}>
+              <Header as="h2" size="medium">
+                L&apos;association :
+                {' '}
+                {organism.name}
+              </Header>
+              {organism.organism_description}
               {' '}
-              {organism.name}
-            </Header>
-            {organism.organism_description}
-            {' '}
-          </Grid.Column>
-        </Grid.Row>
+            </Grid.Column>
+          </Grid.Row>
         )}
         {/* If on organism page, show edit button */}
         {currentPath === `/organism/activity/${activity.code_activity}` && (
-        <Grid.Row>
-          <Link to={`/organism/activity/${activity.code_activity}/edit`}>
-            <Button basic color="teal" type="button" size="mini">Modifier cette activité</Button>
-          </Link>
-        </Grid.Row>
+          <Grid.Row>
+            <Link to={`/organism/activity/${activity.code_activity}/edit`}>
+              <Button basic color="teal" type="button" size="mini">Modifier cette activité</Button>
+            </Link>
+          </Grid.Row>
         )}
         {/* If on organism page, show delete button */}
         {currentPath === `/organism/activity/${activity.code_activity}` && (
-        <Grid.Row>
-          <Button basic color="red" type="submit" size="mini" onClick={handleClick}>Supprimer cette activité</Button>
-        </Grid.Row>
+          <Grid.Row>
+            <Button basic color="red" type="submit" size="mini" onClick={handleClick}>Supprimer cette activité</Button>
+          </Grid.Row>
         )}
       </Grid>
     </Container>
