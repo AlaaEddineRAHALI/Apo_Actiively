@@ -25,7 +25,7 @@ module.exports = {
       req.params.id,
       req.decodedToken.id
     ); //TODO: change email by code_organism
-    console.log(res.json(activity));
+    // console.log(res.json(activity));
     return res.json(activity);
   },
   /**
