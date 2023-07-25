@@ -3,8 +3,8 @@ Selecitoner une activité avec le nom tennis qui est sous 30€ le Samedi
 ```sql
     SELECT * FROM activity
     JOIN day ON pk_activity = code_activity
-    WHERE activity.name LIKE 'Tenn%' 
-    AND price < 30 
+    WHERE activity.name LIKE 'Tenn%'
+    AND price < 30
     AND day.name LIKE 'Samedi%'
 ```
 
@@ -30,6 +30,7 @@ SELECT json_agg(row_to_json(activity))
       ) activity
 
 ```
+
 Returns
 
 ```json
@@ -42,7 +43,6 @@ Returns
     "price_type": "La scéance"
   }
 ]
-
 ```
 
 Selecitoner une activité by ID, avec les infos de l'organisme qui l'a crée
@@ -51,9 +51,9 @@ Selecitoner une activité by ID, avec les infos de l'organisme qui l'a crée
 
 SELECT json_agg(row_to_json(activity))
 	FROM (
-		SELECT 
+		SELECT
             a.name, a.address, a.zip_code, d.name as day, d.start_time, d.end_time, a.price, a.price_type, a.gender, a.level, a.description,
-		    json_build_object('email', o.contact_email, 'phone', o.phone_number, 'organism_description', o.description) as organism_infos 
+		    json_build_object('email', o.contact_email, 'phone', o.phone_number, 'organism_description', o.description) as organism_infos
         FROM activity a
 		    JOIN day d ON pk_activity = code_activity
 		    JOIN organism o ON pk_activity = code_activity
@@ -85,5 +85,4 @@ Returns
     }
   }
 ]
-
 ```
