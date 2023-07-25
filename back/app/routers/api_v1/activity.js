@@ -1,14 +1,14 @@
-const express = require('express');
+const express = require("express");
 
 const router = express.Router();
-const validator = require('../../validations/validator');
-const searchSchema = require('../../validations/schemas/searchSchema');
-const controller = require('../../controllers/v1/activityController');
-const controllerHandler = require('../../helpers/controllerHandler');
+const validator = require("../../validations/validator");
+const searchSchema = require("../../validations/schemas/searchSchema");
+const controller = require("../../controllers/v1/activityController");
+const controllerHandler = require("../../helpers/controllerHandler");
 
 router
-    .route('/:id')
-    /** 
+  .route("/:id")
+  /** 
      * GET /api/v1/activity/{id}
      * @summary Get one activity by id
      * @tags GET
@@ -39,10 +39,10 @@ router
            }
      * }
     */
-    .get(controllerHandler(controller.getOneActivty))
+  .get(controllerHandler(controller.getOneActivty));
 router
-    .route('/search')
-    /**
+  .route("/search")
+  /**
  * POST /api/v1/activity/search
  * @tags POST
  * @summary Find all activities filtered by keyword & zip_code
@@ -83,6 +83,6 @@ router
  *   "zip_code": "75%"
  * }
  */
-    .post(validator(searchSchema),controllerHandler(controller.getAllByKeyword))
+  .post(validator(searchSchema), controllerHandler(controller.getAllByKeyword));
 
 module.exports = router;
