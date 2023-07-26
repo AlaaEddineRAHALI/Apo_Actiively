@@ -18,19 +18,16 @@ import Sport from "../../images/Sport2.svg";
 
 function ModifProfil({ token }) {
   const [organism, setOrganism] = useState({});
+  const url = process.env.REACT_APP_URL;
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     axios
-      .patch(
-        "https://actiively-back.onrender.com/api/v1/organism/profile/edit",
-        data,
-        {
-          headers: {
-            authorization: token,
-          },
-        }
-      )
+      .patch(`${url}/api/v1/organism/profile/edit`, data, {
+        headers: {
+          authorization: token,
+        },
+      })
       .then((response) => {
         swal({
           title: "Le profil a bien été modifié !",
@@ -47,14 +44,11 @@ function ModifProfil({ token }) {
   // Request to API to get profile data of an organism depending on token
   const fetchOrganism = async () => {
     try {
-      const response = await axios.get(
-        "https://actiively-back.onrender.com/api/v1/organism/profile",
-        {
-          headers: {
-            authorization: token,
-          },
-        }
-      );
+      const response = await axios.get(`${url}/api/v1/organism/profile`, {
+        headers: {
+          authorization: token,
+        },
+      });
       // Give data to state
       setOrganism(response.data.user);
     } catch (error) {

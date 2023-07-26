@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const corsOptions = {
-  origin: "https://actiively.onrender.com",
+  origin: "https://actiively.onrender.com/",
 
   optionsSuccessStatus: 200,
 };

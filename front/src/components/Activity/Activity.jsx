@@ -23,6 +23,7 @@ import {
 function Activity({ token }) {
   const [activity, setActivity] = useState({});
   const [organism, setOrganism] = useState({});
+  const url = process.env.REACT_APP_URL;
   // Used params to add id to URL when sending an axios request
   let id = useParams();
   // Transformed result to number to match format set in the Back
@@ -30,9 +31,7 @@ function Activity({ token }) {
   // Request to API to get data for an Activity with an id in URL
   const fetchActivity = async () => {
     try {
-      const response = await axios.get(
-        `https://actiively-back.onrender.com/api/v1/activity/${id}`
-      );
+      const response = await axios.get(`${url}/api/v1/activity/${id}`);
       // Update states with results
       setActivity(response.data);
       setOrganism(response.data.organism_infos);
@@ -55,12 +54,9 @@ function Activity({ token }) {
   // Delete an activity feature
   const deleteActivity = async () => {
     try {
-      await axios.delete(
-        `https://actiively-back.onrender.com/api/v1/organism/activity/${id}/delete`,
-        {
-          headers: { authorization: token },
-        }
-      );
+      await axios.delete(`${url}/api/v1/organism/activity/${id}/delete`, {
+        headers: { authorization: token },
+      });
       navigate("/organism/activities");
     } catch (error) {
       console.log(error);

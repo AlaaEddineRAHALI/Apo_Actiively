@@ -1,60 +1,52 @@
+/* eslint-disable brace-style */
+/* eslint-disable comma-dangle */
+/* eslint-disable quotes */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState, useEffect } from 'react';
-import swal from 'sweetalert';
-import axios from 'axios';
-import PropTypes from 'prop-types';
-import { Link, useNavigate } from 'react-router-dom';
-import { Button, Icon } from 'semantic-ui-react';
-import Sport from '../../images/Sport3.svg';
-import './profil.scss';
+import React, { useState, useEffect } from "react";
+import swal from "sweetalert";
+import axios from "axios";
+import PropTypes from "prop-types";
+import { Link, useNavigate } from "react-router-dom";
+import { Button, Icon } from "semantic-ui-react";
+import Sport from "../../images/Sport3.svg";
+import "./profil.scss";
 
-function Profil({
-  token,
-  setIsLogged,
-  setToken,
-}) {
+function Profil({ token, setIsLogged, setToken }) {
   const [organism, setOrganism] = useState({});
+  const url = process.env.REACT_APP_URL;
   const navigate = useNavigate();
 
   // Request to API to get profile data of an organism depending on token
   const fetchOrganism = async () => {
     try {
-      const response = await axios.get('https://actiively-back.onrender.com/api/v1/organism/profile', {
+      const response = await axios.get(`${url}/api/v1/organism/profile`, {
         headers: {
           authorization: token,
         },
       });
       // Give data to state
       setOrganism(response.data.user);
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
     }
   };
 
   // useEffect so that data is fetched on mount
-  useEffect(
-    () => {
-      fetchOrganism();
-    },
-    [],
-  );
+  useEffect(() => {
+    fetchOrganism();
+  }, []);
 
   // Delete profile feature
   const deleteProfile = async () => {
     try {
-      await axios.delete(
-        'https://actiively-back.onrender.com/api/v1/organism/profile/delete',
-        {
-          headers: { authorization: token },
-        },
-      );
+      await axios.delete(`${url}/api/v1/organism/profile/delete`, {
+        headers: { authorization: token },
+      });
       setToken(null);
       setIsLogged(false); // Logout
       localStorage.clear(); // Remove token from localStorage in browser
-      navigate('/');
-    }
-    catch (error) {
+      navigate("/");
+    } catch (error) {
       console.log(error);
     }
   };
@@ -62,18 +54,17 @@ function Profil({
   // Alert modal to confirm delete profile
   const handleClick = () => {
     swal({
-      title: 'Voulez-vous vraiment supprimer le profil ?',
-      buttons: ['Annuler', 'Supprimer le profil'],
+      title: "Voulez-vous vraiment supprimer le profil ?",
+      buttons: ["Annuler", "Supprimer le profil"],
       dangerMode: true,
-    })
-      .then((willDelete) => {
-        if (willDelete) {
-          deleteProfile();
-          swal('Votre profil a bien été supprimé', {
-            icon: 'success',
-          });
-        }
-      });
+    }).then((willDelete) => {
+      if (willDelete) {
+        deleteProfile();
+        swal("Votre profil a bien été supprimé", {
+          icon: "success",
+        });
+      }
+    });
   };
 
   return (
@@ -86,9 +77,7 @@ function Profil({
           <h1 className="organism-infos-header-title">Mon profil</h1>
           <p className="cancel-modif">
             <Link to="/organism/profile/edit" className="link">
-              <Button
-                className="ui color1 button"
-              >
+              <Button className="ui color1 button">
                 <Button.Content visible>
                   <Icon name="pencil" />
                 </Button.Content>
@@ -118,10 +107,20 @@ function Profil({
             <p>{organism.description}</p>
           </div>
           <div className="organism-delete">
-            <Button basic color="red" type="button" size="mini" onClick={handleClick}>Supprimer le profil</Button>
+            <Button
+              basic
+              color="red"
+              type="button"
+              size="mini"
+              onClick={handleClick}
+            >
+              Supprimer le profil
+            </Button>
           </div>
           <div>
-            <a href="https://storyset.com/sport" className="attribution">Sport illustrations by Storyset</a>
+            <a href="https://storyset.com/sport" className="attribution">
+              Sport illustrations by Storyset
+            </a>
           </div>
         </div>
       </div>

@@ -20,6 +20,7 @@ import Sport from "../../images/Sport.svg";
 import "./createActivity.scss";
 // label pour le menu déroulant pour le type d'activité
 function CreateActivity({ token }) {
+  const url = process.env.REACT_APP_URL;
   const navigate = useNavigate();
   const {
     register,
@@ -45,15 +46,11 @@ function CreateActivity({ token }) {
 
   const onSubmit = (data) => {
     axios
-      .post(
-        "https://actiively-back.onrender.com/api/v1/organism/create",
-        data,
-        {
-          headers: {
-            authorization: token,
-          },
-        }
-      )
+      .post(`${url}/api/v1/organism/create`, data, {
+        headers: {
+          authorization: token,
+        },
+      })
       .then((response) => {
         if (response.data.error) {
           swal({

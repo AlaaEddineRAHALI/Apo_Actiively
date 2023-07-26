@@ -1,17 +1,23 @@
-import React, { useState, useMemo, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import swal from 'sweetalert';
-import axios from 'axios';
+/* eslint-disable brace-style */
+/* eslint-disable comma-dangle */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable quotes */
+/* eslint-disable no-console */
+import React, { useState, useMemo, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
+import swal from "sweetalert";
+import axios from "axios";
 
 const SearchContext = React.createContext({
-  handleSearch: () => { },
+  handleSearch: () => {},
   search: [],
   results: [],
 });
 export default SearchContext;
 
 export function SearchContextProvider({ children }) {
+  const url = process.env.REACT_APP_URL;
   const [search, setSearch] = useState([]);
   const [results, setResults] = useState([]);
 
@@ -24,33 +30,30 @@ export function SearchContextProvider({ children }) {
       return;
     }
     try {
-      await axios.post('https://actiively-back.onrender.com/api/v1/activity/search', {
-        keyword: search.keyword.toLowerCase(),
-        zip_code: search.zip_code,
-      })
+      await axios
+        .post(`${url}/api/v1/activity/search`, {
+          keyword: search.keyword.toLowerCase(),
+          zip_code: search.zip_code,
+        })
 
         .then((res) => {
           setResults(res.data);
         });
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
     }
   };
 
-  useEffect(
-    () => {
-      postData();
-    },
-    [search],
-  );
+  useEffect(() => {
+    postData();
+  }, [search]);
 
   const handleSearch = (e, state) => {
     e.preventDefault();
     const act = `%${state.keyword}%`;
     const key = `${state.zip_code}%`;
-    if (key === '%') {
-      swal('Oops! Veuillez saisir un code postal (entre 2 et 5 chiffres)');
+    if (key === "%") {
+      swal("Oops! Veuillez saisir un code postal (entre 2 et 5 chiffres)");
       return;
     }
     setSearch({
@@ -59,14 +62,17 @@ export function SearchContextProvider({ children }) {
     });
 
     // Redirection to results page on click on Submit
-    navigate('/activity');
+    navigate("/activity");
   };
 
-  const memoizedValue = useMemo(() => ({
-    search,
-    results,
-    handleSearch,
-  }), [results]);
+  const memoizedValue = useMemo(
+    () => ({
+      search,
+      results,
+      handleSearch,
+    }),
+    [results]
+  );
   return (
     <SearchContext.Provider value={memoizedValue}>
       {children}

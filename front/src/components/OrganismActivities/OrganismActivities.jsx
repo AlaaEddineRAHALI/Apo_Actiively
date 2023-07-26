@@ -10,18 +10,16 @@ import "./organismActivitiesStyles.scss";
 
 function OrganismActivities({ token }) {
   const [activities, setActivities] = useState([]);
+  const url = process.env.REACT_APP_URL;
 
   // Request to API to get activities of an organism
   const fetchActivities = async () => {
     try {
-      const response = await axios.get(
-        "https://actiively-back.onrender.com/api/v1/organism/activities",
-        {
-          headers: {
-            authorization: token,
-          },
-        }
-      );
+      const response = await axios.get(`${url}/api/v1/organism/activities`, {
+        headers: {
+          authorization: token,
+        },
+      });
       setActivities(response.data);
     } catch (error) {
       console.log(error);

@@ -20,6 +20,7 @@ import Sport from "../../images/Sport3.svg";
 
 function ModifActivity({ token }) {
   const [activity, setActivity] = useState({});
+  const url = process.env.REACT_APP_URL;
   const navigate = useNavigate();
   // Used params to add id to URL when sending an axios request
   let id = useParams();
@@ -49,9 +50,7 @@ function ModifActivity({ token }) {
   // Request to API to get data for an Activity for placeholders
   const fetchActivity = async () => {
     try {
-      const response = await axios.get(
-        `https://actiively-back.onrender.com/api/v1/activity/${id}`
-      );
+      const response = await axios.get(`${url}/api/v1/activity/${id}`);
       // Update states with results
       setActivity(response.data);
     } catch (error) {
@@ -62,15 +61,11 @@ function ModifActivity({ token }) {
   // Post request to update data
   const onSubmit = (data) => {
     axios
-      .patch(
-        `https://actiively-back.onrender.com/api/v1/organism/activity/${id}/edit`,
-        data,
-        {
-          headers: {
-            authorization: token,
-          },
-        }
-      )
+      .patch(`${url}/api/v1/organism/activity/${id}/edit`, data, {
+        headers: {
+          authorization: token,
+        },
+      })
       .then((response) => {
         swal({
           title: "L'activité a bien été modifiée !",

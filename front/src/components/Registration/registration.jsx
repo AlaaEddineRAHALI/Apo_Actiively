@@ -19,6 +19,7 @@ import "./registration.scss";
 
 function Registration() {
   const navigate = useNavigate();
+  const url = process.env.REACT_APP_URL;
 
   const {
     register,
@@ -41,10 +42,7 @@ function Registration() {
 
   const onSubmit = (data) => {
     axios
-      .post(
-        "https://actiively-back.onrender.com/api/v1/organism/register",
-        data
-      )
+      .post(`${url}/api/v1/organism/register`, data)
       .then((response) => {
         swal({
           title: "Votre organisme a bien été créé !",
