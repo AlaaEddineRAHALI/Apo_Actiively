@@ -9,11 +9,11 @@
 /* eslint-disable react/jsx-indent-props */
 /* eslint-disable react/jsx-indent */
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
 import PropTypes from "prop-types";
-import { Button, Icon } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 import axios from "axios";
 import "./modifActivity.scss";
 import Sport from "../../images/Sport3.svg";
@@ -72,7 +72,6 @@ function ModifActivity({ token }) {
         }
       )
       .then((response) => {
-        // console.log(response.data);
         swal({
           title: "L'activité a bien été modifiée !",
           icon: "success",

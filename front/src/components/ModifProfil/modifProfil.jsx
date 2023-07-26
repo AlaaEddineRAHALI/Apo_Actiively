@@ -18,10 +18,8 @@ import Sport from "../../images/Sport2.svg";
 
 function ModifProfil({ token }) {
   const [organism, setOrganism] = useState({});
-
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
-
   const onSubmit = (data) => {
     axios
       .patch(
@@ -34,7 +32,6 @@ function ModifProfil({ token }) {
         }
       )
       .then((response) => {
-        // console.log(response.data);
         swal({
           title: "Le profil a bien été modifié !",
           icon: "success",

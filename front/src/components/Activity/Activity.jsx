@@ -1,18 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+/* eslint-disable object-curly-newline */
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable comma-dangle */
+/* eslint-disable quotes */
+/* eslint-disable brace-style */
+/* eslint-disable no-console */
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams, useLocation, useNavigate, Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import "semantic-ui-css/semantic.min.css";
+import swal from "sweetalert";
 import {
-  useParams, useLocation, useNavigate, Link,
-} from 'react-router-dom';
-import PropTypes from 'prop-types';
-import 'semantic-ui-css/semantic.min.css';
-import swal from 'sweetalert';
-import {
-  Image, Grid, Header, Container, Label, Icon, Button,
-} from 'semantic-ui-react';
+  Image,
+  Grid,
+  Header,
+  Container,
+  Label,
+  Icon,
+  Button,
+} from "semantic-ui-react";
 
-function Activity({
-  token,
-}) {
+function Activity({ token }) {
   const [activity, setActivity] = useState({});
   const [organism, setOrganism] = useState({});
   // Used params to add id to URL when sending an axios request
@@ -22,27 +30,23 @@ function Activity({
   // Request to API to get data for an Activity with an id in URL
   const fetchActivity = async () => {
     try {
-      const response = await axios.get(`https://actiively-back.onrender.com/api/v1/activity/${id}`);
+      const response = await axios.get(
+        `https://actiively-back.onrender.com/api/v1/activity/${id}`
+      );
       // Update states with results
       setActivity(response.data);
       setOrganism(response.data.organism_infos);
-      // console.log(response.data);
-      // console.log(response.data.organism_infos);
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
     }
   };
   // useEffect so that data is fetched on mount
-  useEffect(
-    () => {
-      fetchActivity();
-    },
-    [activity],
-  );
+  useEffect(() => {
+    fetchActivity();
+  }, [activity]);
   // To identify the page we are currently on
   const location = useLocation();
-  const [currentPath, setCurrentPath] = useState('');
+  const [currentPath, setCurrentPath] = useState("");
   // Give the URL to state whenever URL changes
   useEffect(() => {
     setCurrentPath(location.pathname);
@@ -55,11 +59,10 @@ function Activity({
         `https://actiively-back.onrender.com/api/v1/organism/activity/${id}/delete`,
         {
           headers: { authorization: token },
-        },
+        }
       );
-      navigate('/organism/activities');
-    }
-    catch (error) {
+      navigate("/organism/activities");
+    } catch (error) {
       console.log(error);
     }
   };
@@ -67,23 +70,22 @@ function Activity({
   // Alert modal to confirm delete activity
   const handleClick = () => {
     swal({
-      title: 'Voulez-vous vraiment supprimer cette activité ?',
-      buttons: ['Annuler', 'Supprimer l\'activité'],
+      title: "Voulez-vous vraiment supprimer cette activité ?",
+      buttons: ["Annuler", "Supprimer l'activité"],
       dangerMode: true,
-    })
-      .then((willDelete) => {
-        if (willDelete) {
-          deleteActivity();
-          swal('L\'activité a bien été supprimée', {
-            icon: 'success',
-          });
-        }
-      });
+    }).then((willDelete) => {
+      if (willDelete) {
+        deleteActivity();
+        swal("L'activité a bien été supprimée", {
+          icon: "success",
+        });
+      }
+    });
   };
 
   return (
     <Container>
-      <Grid centered style={{ marginBottom: '2rem' }}>
+      <Grid centered style={{ marginBottom: "2rem" }}>
         <Grid.Row>
           <Header as="h1">{activity.name}</Header>
         </Grid.Row>
@@ -92,40 +94,26 @@ function Activity({
             <Image src={activity.image_url} alt={activity.name} />
           </Grid.Column>
           <Grid.Column mobile={16} tablet={8} computer={4}>
-            <Container style={{ textAlign: 'center' }}>
+            <Container style={{ textAlign: "center" }}>
               <br />
               {activity.address}
               <br />
-              {activity.zip_code}
-              {' '}
-              {activity.city}
+              {activity.zip_code} {activity.city}
               <br />
               <br />
               <Label.Group color="teal">
                 <Label as="a">
-                  {activity.price}
-                  {' '}
-                  €
-                  {' '}
-                  {activity.price_type}
+                  {activity.price} € {activity.price_type}
                 </Label>
+                <Label as="a">{activity.gender}</Label>
+                <Label as="a">{activity.level}</Label>
                 <Label as="a">
-                  {activity.gender}
-                </Label>
-                <Label as="a">
-                  {activity.level}
-                </Label>
-                <Label as="a">
-                  {activity.day}
-                  {' '}
-                  {activity.start_time}
-                  {' '}
-                  -
-                  {' '}
-                  {activity.end_time}
+                  {activity.day} {activity.start_time} - {activity.end_time}
                 </Label>
               </Label.Group>
-              <Header as="h3" size="small">Informations de contact</Header>
+              <Header as="h3" size="small">
+                Informations de contact
+              </Header>
               {organism.email}
               &nbsp;
               <Icon name="mail" />
@@ -138,7 +126,9 @@ function Activity({
         </Grid.Row>
         <Grid.Row>
           <Grid.Column mobile={12} computer={8}>
-            <Header as="h2" size="medium">L&apos;activité</Header>
+            <Header as="h2" size="medium">
+              L&apos;activité
+            </Header>
             {activity.description}
           </Grid.Column>
         </Grid.Row>
@@ -147,12 +137,9 @@ function Activity({
           <Grid.Row>
             <Grid.Column mobile={12} computer={8}>
               <Header as="h2" size="medium">
-                L&apos;association :
-                {' '}
-                {organism.name}
+                L&apos;association : {organism.name}
               </Header>
-              {organism.organism_description}
-              {' '}
+              {organism.organism_description}{" "}
             </Grid.Column>
           </Grid.Row>
         )}
@@ -160,14 +147,24 @@ function Activity({
         {currentPath === `/organism/activity/${activity.code_activity}` && (
           <Grid.Row>
             <Link to={`/organism/activity/${activity.code_activity}/edit`}>
-              <Button basic color="teal" type="button" size="mini">Modifier cette activité</Button>
+              <Button basic color="teal" type="button" size="mini">
+                Modifier cette activité
+              </Button>
             </Link>
           </Grid.Row>
         )}
         {/* If on organism page, show delete button */}
         {currentPath === `/organism/activity/${activity.code_activity}` && (
           <Grid.Row>
-            <Button basic color="red" type="submit" size="mini" onClick={handleClick}>Supprimer cette activité</Button>
+            <Button
+              basic
+              color="red"
+              type="submit"
+              size="mini"
+              onClick={handleClick}
+            >
+              Supprimer cette activité
+            </Button>
           </Grid.Row>
         )}
       </Grid>
@@ -178,6 +175,6 @@ Activity.propTypes = {
   token: PropTypes.string,
 };
 Activity.defaultProps = {
-  token: '',
+  token: "",
 };
 export default React.memo(Activity);

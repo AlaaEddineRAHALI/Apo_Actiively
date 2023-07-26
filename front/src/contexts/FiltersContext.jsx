@@ -1,5 +1,7 @@
-import React, { useState, useMemo } from 'react';
-import PropTypes from 'prop-types';
+/* eslint-disable comma-dangle */
+/* eslint-disable quotes */
+import React, { useState, useMemo } from "react";
+import PropTypes from "prop-types";
 
 const FiltersContext = React.createContext({
   handleFilter: () => {},
@@ -9,15 +11,17 @@ export default FiltersContext;
 
 export function FiltersContextProvider({ children }) {
   const [filtersSelect, setFilters] = useState([]);
-
   const handleFilter = (Filter) => {
     setFilters(Filter);
   };
 
-  const memoizedValue = useMemo(() => ({
-    filtersSelect,
-    handleFilter,
-  }), [filtersSelect]);
+  const memoizedValue = useMemo(
+    () => ({
+      filtersSelect,
+      handleFilter,
+    }),
+    [filtersSelect]
+  );
 
   return (
     <FiltersContext.Provider value={memoizedValue}>

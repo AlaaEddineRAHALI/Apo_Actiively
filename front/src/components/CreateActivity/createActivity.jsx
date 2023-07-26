@@ -44,7 +44,6 @@ function CreateActivity({ token }) {
   });
 
   const onSubmit = (data) => {
-    // console.log("data:", data);
     axios
       .post(
         "https://actiively-back.onrender.com/api/v1/organism/create",
@@ -56,7 +55,6 @@ function CreateActivity({ token }) {
         }
       )
       .then((response) => {
-        // console.log('response of create:', response.data);
         if (response.data.error) {
           swal({
             title: "L'activité doit avoir un nom unique !",
