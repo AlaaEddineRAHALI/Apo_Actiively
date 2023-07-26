@@ -1,3 +1,7 @@
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable comma-dangle */
+/* eslint-disable brace-style */
+/* eslint-disable quotes */
 /* eslint-disable no-console */
 /* eslint-disable indent */
 /* eslint-disable jsx-a11y/label-has-associated-control */

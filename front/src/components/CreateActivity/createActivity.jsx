@@ -1,3 +1,6 @@
+/* eslint-disable comma-dangle */
+/* eslint-disable brace-style */
+/* eslint-disable quotes */
 /* eslint-disable react/jsx-closing-tag-location */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-indent-props */

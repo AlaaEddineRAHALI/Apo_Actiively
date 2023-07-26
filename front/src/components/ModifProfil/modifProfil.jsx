@@ -1,8 +1,12 @@
+/* eslint-disable brace-style */
+/* eslint-disable comma-dangle */
+/* eslint-disable quotes */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from "react";
+// eslint-disable-next-line quotes
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import PropTypes from "prop-types";
