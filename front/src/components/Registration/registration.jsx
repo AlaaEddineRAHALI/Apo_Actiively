@@ -60,7 +60,8 @@ function Registration() {
           });
         } else {
           swal({
-            title: "La communication avec le serveur de données a échoué.",
+            title:
+              "La communication avec le serveur de données a échoué. Nous vous prions de bien vouloir réessayer ultérieurement.",
             icon: "error",
           });
         }
