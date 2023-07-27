@@ -27,7 +27,11 @@ function Profil({ token, setIsLogged, setToken }) {
       // Give data to state
       setOrganism(response.data.user);
     } catch (error) {
-      console.log(error);
+      swal({
+        title:
+          "La communication avec le serveur de données a échoué. Nous vous prions de bien vouloir réessayer ultérieurement.",
+        icon: "error",
+      });
     }
   };
 
@@ -47,7 +51,11 @@ function Profil({ token, setIsLogged, setToken }) {
       localStorage.clear(); // Remove token from localStorage in browser
       navigate("/");
     } catch (error) {
-      console.log(error);
+      swal({
+        title:
+          "La communication avec le serveur de données a échoué. Nous vous prions de bien vouloir réessayer ultérieurement.",
+        icon: "error",
+      });
     }
   };
 

@@ -1,5 +1,6 @@
 /* eslint-disable operator-linebreak */
 /* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable brace-style */
 /* eslint-disable comma-dangle */
 /* eslint-disable quotes */
 /* eslint-disable radix */
@@ -49,11 +50,21 @@ function Registration() {
           text: "Veuillez vous connecter.",
           icon: "success",
         });
+        navigate("/organism/profile");
       })
       .catch((error) => {
-        console.log(error.data);
+        if (error.response && error.response.status === 500) {
+          swal({
+            title: "Adresse e-mail existe",
+            icon: "error",
+          });
+        } else {
+          swal({
+            title: "La communication avec le serveur de données a échoué.",
+            icon: "error",
+          });
+        }
       });
-    navigate("/organism/profile");
   };
 
   return (

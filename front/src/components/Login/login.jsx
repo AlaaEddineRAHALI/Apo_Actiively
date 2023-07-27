@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import PropTypes from "prop-types";
+import swal from "sweetalert";
 import Sport from "../../images/Sport.svg";
 import "./login.scss";
 
@@ -49,11 +50,13 @@ function Login({ setToken, setIsLogged, isLogged }) {
       navigate("/organism/profile");
     } catch (err) {
       if (!err?.response) {
-        setErrMsg("Le serveur ne répond pas");
-        console.log(errMsg);
+        swal({
+          title:
+            "La communication avec le serveur de données a échoué. Nous vous prions de bien vouloir réessayer ultérieurement.",
+          icon: "error",
+        });
       } else {
         setErrMsg("Les identifiants ne correspondent pas. Veuillez réessayer.");
-        console.log(errMsg);
       }
     }
   };

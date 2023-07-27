@@ -34,11 +34,16 @@ function ModifProfil({ token }) {
           icon: "success",
         });
         setOrganism(response.data);
+        navigate("/organism/profile");
       })
+
       .catch((error) => {
-        console.log(error.data);
+        swal({
+          title:
+            "La communication avec le serveur de données a échoué. Nous vous prions de bien vouloir réessayer ultérieurement.",
+          icon: "error",
+        });
       });
-    navigate("/organism/profile");
   };
 
   // Request to API to get profile data of an organism depending on token
@@ -52,7 +57,11 @@ function ModifProfil({ token }) {
       // Give data to state
       setOrganism(response.data.user);
     } catch (error) {
-      console.log(error);
+      swal({
+        title:
+          "La communication avec le serveur de données a échoué. Nous vous prions de bien vouloir réessayer ultérieurement.",
+        icon: "error",
+      });
     }
   };
 

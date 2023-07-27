@@ -38,9 +38,15 @@ export function SearchContextProvider({ children }) {
 
         .then((res) => {
           setResults(res.data);
+          // Redirection to results page on click on Submit
+          navigate("/activity");
         });
     } catch (error) {
-      console.log(error);
+      swal({
+        title:
+          "La communication avec le serveur de données a échoué. Nous vous prions de bien vouloir réessayer ultérieurement.",
+        icon: "error",
+      });
     }
   };
 
@@ -60,9 +66,6 @@ export function SearchContextProvider({ children }) {
       keyword: act,
       zip_code: key,
     });
-
-    // Redirection to results page on click on Submit
-    navigate("/activity");
   };
 
   const memoizedValue = useMemo(

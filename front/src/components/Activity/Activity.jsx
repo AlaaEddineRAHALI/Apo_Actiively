@@ -36,7 +36,11 @@ function Activity({ token }) {
       setActivity(response.data);
       setOrganism(response.data.organism_infos);
     } catch (error) {
-      console.log(error);
+      swal({
+        title:
+          "La communication avec le serveur de données a échoué. Nous vous prions de bien vouloir réessayer ultérieurement.",
+        icon: "error",
+      });
     }
   };
   // useEffect so that data is fetched on mount
@@ -59,7 +63,11 @@ function Activity({ token }) {
       });
       navigate("/organism/activities");
     } catch (error) {
-      console.log(error);
+      swal({
+        title:
+          "La communication avec le serveur de données a échoué. Nous vous prions de bien vouloir réessayer ultérieurement.",
+        icon: "error",
+      });
     }
   };
 

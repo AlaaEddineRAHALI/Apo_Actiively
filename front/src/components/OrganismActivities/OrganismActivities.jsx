@@ -5,6 +5,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
+import swal from "sweetalert";
 import Post from "../ActivityList/Posts/Post/Post";
 import "./organismActivitiesStyles.scss";
 
@@ -22,7 +23,11 @@ function OrganismActivities({ token }) {
       });
       setActivities(response.data);
     } catch (error) {
-      console.log(error);
+      swal({
+        title:
+          "La communication avec le serveur de données a échoué. Nous vous prions de bien vouloir réessayer ultérieurement.",
+        icon: "error",
+      });
     }
   };
 

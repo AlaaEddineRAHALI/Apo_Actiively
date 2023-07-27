@@ -62,12 +62,16 @@ function CreateActivity({ token }) {
             title: "L'activité a bien été créée !",
             icon: "success",
           });
+          navigate("/organism/activities");
         }
       })
       .catch((error) => {
-        console.log(error.data);
+        swal({
+          title:
+            "La communication avec le serveur de données a échoué. Nous vous prions de bien vouloir réessayer ultérieurement.",
+          icon: "error",
+        });
       });
-    navigate("/organism/activities");
   };
 
   return (

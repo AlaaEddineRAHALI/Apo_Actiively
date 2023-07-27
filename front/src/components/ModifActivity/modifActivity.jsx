@@ -54,7 +54,11 @@ function ModifActivity({ token }) {
       // Update states with results
       setActivity(response.data);
     } catch (error) {
-      console.log(error);
+      swal({
+        title:
+          "La communication avec le serveur de données a échoué. Nous vous prions de bien vouloir réessayer ultérieurement.",
+        icon: "error",
+      });
     }
   };
 
@@ -72,11 +76,16 @@ function ModifActivity({ token }) {
           icon: "success",
         });
         setActivity(response.data);
+        navigate(`/organism/activity/${id}`);
       })
+      // eslint-disable-next-line no-unused-vars
       .catch((error) => {
-        console.log(error.data);
+        swal({
+          title:
+            "La communication avec le serveur de données a échoué. Nous vous prions de bien vouloir réessayer ultérieurement.",
+          icon: "error",
+        });
       });
-    navigate(`/organism/activity/${id}`);
   };
 
   // useEffect so that data is fetched on mount
