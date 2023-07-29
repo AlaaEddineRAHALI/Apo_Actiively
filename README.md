@@ -49,9 +49,9 @@ Cette version offre:
 
 ## Vidéos explicatives :
 
-- Créer un compte organisme: [Vidéo1](https://vimeo.com/849726308?share=copy)
-- Ajouter et modifier une activité: [Vidéo2](https://vimeo.com/849729198?share=copy)
-- chercher une activité par code postale ou code postale et nom d'activité: [Vidéo3](https://vimeo.com/849729918?share=copy)
+- Créer un compte organisme: [Vidéo1](https://player.vimeo.com/video/849726308)
+- Ajouter et modifier une activité: [Vidéo2](https://player.vimeo.com/video/849729198)
+- chercher une activité par code postale ou code postale et nom d'activité: [Vidéo3](https://player.vimeo.com/video/849729918)
 
 ### Lien du projet :
 
