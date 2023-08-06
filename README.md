@@ -31,6 +31,9 @@ Cette version offre:
 
 ## Technologies :
 
+- HTML
+- SCSS
+- Semantic UI
 - React
 - Node.js
 - Express
@@ -56,6 +59,17 @@ Cette version offre:
 ### Lien du projet :
 
 - L'application [Actiively](https://actiively.onrender.com/) est en ligne. Parfois, des latences peuvent être présentes dans le fonctionnement du site étant donné que j'ai opté pour des solutions d'hébergement gratuites.
+- Voici une proposition des URL pour effectuer des tests:
+  - [Image Danse 1](https://images.pexels.com/photos/8935911/pexels-photo-8935911.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
+  - [Image Danse 2](https://images.pexels.com/photos/898220/pexels-photo-898220.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
+  - [Image Golf 1](https://images.pexels.com/photos/114972/pexels-photo-114972.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
+  - [Image Golf 2](https://images.pexels.com/photos/2828723/pexels-photo-2828723.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
+  - [Image Tennis 1](https://images.pexels.com/photos/2352372/pexels-photo-2352372.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
+  - [Image Tennis 2](https://images.pexels.com/photos/5739121/pexels-photo-5739121.jpeg)
+  - [Image football 1 ](https://images.pexels.com/photos/104675/pexels-photo-104675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
+  - [Image football 2 ](https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
+  - [Image Natation 1 ](https://images.pexels.com/photos/9030291/pexels-photo-9030291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
+  - [Image Natation 2 ](https://images.pexels.com/photos/9030286/pexels-photo-9030286.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
 
 ## Collaborateurs :
 
